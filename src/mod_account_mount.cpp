@@ -20,7 +20,7 @@ class AccountMounts : public PlayerScript
 
 public:
     AccountMounts() : PlayerScript("AccountMounts", {
-        PLAYERHOOK_ON_LOGIN, PLAYERHOOK_ON_UPDATE_SKILL
+        PLAYERHOOK_ON_LOGIN, PLAYERHOOK_ON_LEARN_SPELL
     })
     {
         // Retrieve limitrace option from the config file
@@ -49,9 +49,13 @@ public:
         TeachPlayerAccountMounts(player);
     }
 
-    void OnPlayerUpdateSkill(Player* player, uint32 skillId, [[maybe_unused]] uint32 value, [[maybe_unused]] uint32 max, [[maybe_unused]] uint32 step, [[maybe_unused]] uint32 newValue)
+    void OnPlayerLearnSpell(Player* player, uint32 spellID)
     {
-        if (limitRidingSkill && skillId == SKILL_RIDING)
+        // Apprentice Riding (33388)
+        // Journeyman Riding (33391)
+        // Expert Riding (34090)
+        // Artisan Riding (34091)
+        if (limitRidingSkill && (spellID == 33388 || spellID == 33391 || spellID == 34090 || spellID == 34091))
             TeachPlayerAccountMounts(player);
     }
 
