@@ -22,3 +22,9 @@ Account.Mounts.ExcludedSpellIDs = 0
 # 1 = will enforce the limit.
 
 Account.Mounts.LimitRace = 0
+
+# Limit shared mounts based on your character's riding skill?
+# 0 = share mounts with all characters regardless of riding skill
+# 1 = share mounts only with characters with the required riding skill level
+
+Account.Mounts.LimitRidingSkill = 0
